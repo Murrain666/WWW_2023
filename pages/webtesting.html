@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../style/style.css">
+        <style>
+        body {font-family: Arial, Helvetica, sans-serif; font-size: 20px; margin: 0;}
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Create four equal columns that floats next to each other */
+        .column {
+            float: left;
+            width: 33.33%;
+            height: 3in; 
+            padding: 10px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Responsive layout - makes a two column-layout instead of four columns */
+        @media screen and (max-width: 900px) {
+            .column  {
+                width: 50%;
+            }
+        }
+
+        /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+        @media screen and (max-width: 600px) {
+            .column  {
+                width: 100%;
+            }
+        }
+
+        .selector {
+            position: relative;
+            background-color: yellowgreen;
+            font-size: 18px;
+        }
+
+        /* CSS для checkboxов. */
+        /* The container */
+        .container {
+            display: block;
+            position: relative;
+            left: 15px;
+            padding-left: 35px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            font-size: 15px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        /* Hide the browser's default checkbox */
+        .container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        /* Create a custom checkbox */
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #eee;
+        }
+        /* Create a custom radio button */
+        .checkmark-radio {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #eee;
+            border-radius: 50%;
+        }
+
+        /* On mouse-over, add a grey background color */
+        .container:hover input ~ .checkmark {
+            background-color: #ccc;
+        }
+        .container:hover input ~ .checkmark-radio {
+            background-color: #ccc;
+        }
+
+
+        /* When the checkbox is checked, add a blue background */
+        .container input:checked ~ .checkmark {
+            background-color: #2196F3;
+        }
+        .container input:checked ~ .checkmark-radio {
+            background-color: #2196F3;
+        }
+
+        /* Create the checkmark/indicator (hidden when not checked) */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        .checkmark-radio:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the checkmark when checked */
+        .container input:checked ~ .checkmark:after {
+            display: block;
+        }
+        .container input:checked ~ .checkmark-radio:after {
+            display: block;
+        }
+
+        /* Style the checkmark/indicator */
+        .container .checkmark:after {
+            left: 9px;
+            top: 5px;
+            width: 5px;
+            height: 10px;
+            border: solid greenyellow;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+        /* Style the indicator (dot/circle) */
+        .container .checkmark-radio:after {
+            top: 9px;
+            left: 9px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            border: solid greenyellow;
+            background: white;
+        }
+
+        </style>
+    </head>
+<body>
+
+    <h2 align="center">Тестирование по основам веб-программирования</h2>
+    <p align="center">Выберите ответы на вопросы</p>
+
+    <div class="row">
+        <form action="../incs/wtesting.php" method="post" target="_blank">
+            <div class="column" style="background-color:whitesmoke;">
+                <h2>Вопрос 1</h2>
+                <p>Инструкция браузеру, указывающая способ отображения текста?</p>
+                <h5>Выберите</h5>
+                <label class="container">Программный код
+                    <input type="radio" name="vopros1[]" value="1">
+                    <span class="checkmark-radio"></span>
+                </label>
+                <label class="container">Гиперссылка
+                    <input type="radio" name="vopros1[]" value="2">
+                    <span class="checkmark-radio"></span>
+                </label>
+                <label class="container">Тег
+                    <input type="radio" name="vopros1[]" value="3">
+                    <span class="checkmark-radio"></span>    
+                </label>  
+            </div>
+
+            <div class="column" style="background-color:whitesmoke;">
+                <h2>Вопрос 2</h2>
+                <p>Укажите все корректные типы данных в PHP:</p>
+                <h5>Выберите</h5>
+                <label class="container">varchar
+                    <input type="checkbox" name="vopros2[]" value="1">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">float
+                    <input type="checkbox" name="vopros2[]" value="2">
+                    <span class="checkmark"></span>
+                </label>
+                    <label class="container">complex
+                    <input type="checkbox" name="vopros2[]" value="3">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+
+            <div class="column" style="background-color:whitesmoke;">
+                <h2>Вопрос 3</h2>
+                <p>Какие методы можно применять для отправки формы?</p>
+                <h5>Выберите</h5>
+                <label class="container">Метод POST
+                    <input type="checkbox" name="vopros3[]" value="1">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">Метод PUT
+                    <input type="checkbox" name="vopros3[]" value="2">
+                    <span class="checkmark"></span>
+                </label>
+                    <label class="container">Метод GET
+                    <input type="checkbox" name="vopros3[]" value="3">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            
+            <div class="column" style="background-color:whitesmoke;">
+                <h2>Вопрос 4</h2>
+                <p>Какой тег определяет заголовок документа HTML?</p>
+                <h5>Выберите</h5>
+                <label class="container">BODY
+                    <input type="checkbox" name="vopros4[]" value="1">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">TITLE
+                    <input type="checkbox" name="vopros4[]" value="2">
+                    <span class="checkmark"></span>
+                </label>
+                    <label class="container">HEAD
+                    <input type="checkbox" name="vopros4[]" value="3">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+
+            <div class="column" style="background-color:whitesmoke;">
+                <h2>Вопрос 5</h2>
+                <p>Для создания выпадающего меню необходимо использовать следующие свойства CSS:</p>
+                <h5>Выберите</h5>
+                <div class="selector" style="width: 200px;">
+                    <select>
+                        <option style="font-size: 20px; color: greenyellow " value="">Варианты</option>
+                        <option class="selector" name="vopros5" value="1">display</option>
+                        <option class="selector" name="vopros5" value="2">position</option>
+                        <option class="selector" name="vopros5" value="3">transform</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="column" style="background-color:whitesmoke;">
+                <h2>Вопрос 6</h2>
+                <p>Где в основном применяется ActionScript?</p>
+                <h5>Выберите</h5>
+                <label class="container">В работе с базой MySQL
+                    <input type="radio" name="vopros6" value="1">
+                    <span class="checkmark-radio"></span>
+                </label>
+                <label class="container">В анимации
+                    <input type="radio" name="vopros6" value="2">
+                    <span class="checkmark-radio"></span>
+                </label>
+                <label class="container">Для защиты форм от спама
+                    <input type="radio" name="vopros6" value="3">
+                    <span class="checkmark-radio"></span>    
+                </label> 
+            </div>
+
+            <button type="submit" name="btn-test">Отправить</button>
+        
+        </form>
+    </div>
+
+</body>
+</html>

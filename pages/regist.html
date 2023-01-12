@@ -1,0 +1,108 @@
+<?php
+
+require_once __DIR__ . '/incs/data.php';
+require_once __DIR__ . '/incs/functions.php';
+    
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/style.css">
+    
+</head>
+<body>
+    <header>
+        <h1>Форма регистрации на конференцию</h1>
+        
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3"> 
+                <form action="../incs/actions.php" method="post" target="_blank">
+                    <div class="form-group"> 
+                        <label for="famil">Фамилия</label>
+                        <input name="famil" type="text" class="form-control" id="famil" placeholder="Введите ФАМИЛИЮ" pattern="^[А-Яа-яЁё\s]+$">
+                    </div>
+
+                    <div class="form-group"> 
+                        <label for="name">Имя</label>
+                        <input name="name" type="text" class="form-control" id="name" placeholder="Введите ИМЯ" pattern="^[А-Яа-яЁё\s]+$">
+                    </div>
+
+                    <div class="form-group"> 
+                        <label for="otch">Отчество</label>
+                        <input name="otch" type="text" class="form-control" id="otch" placeholder="Введите ОТЧЕСТВО" pattern="^[А-Яа-яЁё\s]+$">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Электронная почта</label>
+                        <input name="email" type="email" class="form-control" id="email" placeholder="Введите ваш e-mail в формате email@example.ru" pattern="\S+@[a-z]+.[a-z]+">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input name="phone" type="text" class="form-control" id="phone" 
+                        placeholder="Введите номер телефона в формате +7(ххх)ххх-хх-хх без пробелов" 
+                        pattern="[\+]\d{1}[\(]\d{3}[\)]\d{3}[\-]\d{2}[\-]\d{2}" maxlength="18">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bdate"><b>Дата рождения</b></label>
+                        <input type="date" placeholder="Укажите Вашу дату рождения" name="bdate">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Dsect">Выберите секцию</label>
+                        <select id="Dsect" name="Dsect">
+                            <option value="математика">Математика</option>
+                            <option value="физика">Физика</option>
+                            <option value="информатика">Информатика</option>
+                        </select>
+                    </div>
+                        
+
+                    <div class="form-group">
+                        <p>Если у вас есть доклад, поставьте отметку
+                            <input type="checkbox" id="CheckDokl" onclick="adddoclthm()" name="CheckDokl"></p>
+
+                        <p id="text" style="display:none"><br>
+                        
+                            <label for="Csubject">Тема доклада</label><br>
+
+                            <textarea id="Csubject" name="Csubject" 
+                                placeholder="Напишите тему Вашего доклада" style="height:50px"></textarea>
+                        </p>
+                    </div>
+
+                    <div class="form-group">
+                        <input name="agree" type="checkbox" class="form-check-input" id="agree" value="1">
+                        <label class="form-check-label" for="agree">Согласшаюсь с обработкой персональных данных</label>
+                    </div>
+
+                    <button type="submit" name="btn btn-primary">Отправить</button>
+
+                </form>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+    function adddoclthm() {
+        var checkBox = document.getElementById("CheckDokl");
+        var text = document.getElementById("text");
+        if (checkBox.checked == true){
+            text.style.display = "block";
+        } else {
+           text.style.display = "none";
+        }
+    }
+    </script>
+
+</body>
+</html>
